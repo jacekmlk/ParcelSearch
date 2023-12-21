@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    List of saved parcels
+{% endblock %}
+{% block main %}
+    <div class="container-sm">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">TERYT<br>Nr</th>
+                <th scope="col">County<br>Community<br>District</th>
+                <th scope="col">Price</th>
+                <th scope="col">Link<br>Contact</th>
+                <th scope="col">Date<br>Comment</th>
+                <th scope="col">On Map</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{row.id}}<br>{{row.parcel}}</td>
+                    <td>{{row.powiat}}<br>{{row.gmina}}<br>{{row.region}}</td>
+                    <td>{{row.price}}</td>
+                    <td>{{row.link}}<br>{{row.contact}}</td>
+                    <td>{{row.date}}<br>{{row.comment|ntobr|safe}}</td>
+                    <td>
+                      <form action="/" method="post">
+                        <input type="hidden" name="geom_wkt" value="{{ row.geom_wkt }}">
+                        <button class="btn btn-primary" type="submit">Map</button>
+                      </form>
+                    </td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</main>
+{% endblock %}

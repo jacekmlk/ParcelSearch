@@ -1,0 +1,25 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+    width: 100vw;
+}
+
+.leaflet-container.crosshair-cursor-enabled {
+  cursor:crosshair;
+}
+
+textarea, input {
+  resize: none;
+}
+
+textarea, input { 
+  padding:2px; 
+  border:2px 
+  inset #ccc; 
+  width:100%;
+  font-family: Verdana;
+  font-size: 1em;
+}

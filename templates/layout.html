@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!--Bootstrap dependiences-->
+        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <!-- CSS -->
+        <link href="/static/css/styles.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/b37e4ae74e.js" crossorigin="anonymous"></script>
+
+        <title>ParcelSearch: {% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    </head>
+    
+    <body class="d-flex flex-column min-vh-100">
+        <!--<nav class="bg-light border navbar navbar-inverse navbar-light">-->
+            <nav class="bg-light border navbar navbar-expand-md navbar-light">
+                <div class="container-fluid">
+                    <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-flex flex-wrap justify-content-between align-items-center" id="navbar">
+                        {% if session["user_id"] %}
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link" href="/">Map</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/list">List</a></li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <a class="navbar-brand" href="/">
+                                    <img src="/static/favicon.ico" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+                                    ParcelSearch
+                                </a>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                            </ul>
+                        {% else %}
+                            <ul class="navbar-nav">
+                                <a class="navbar-brand" href="/">
+                                    <img src="/static/favicon.ico" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                                    ParcelSearch
+                                </a>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+
+        {% if get_flashed_messages() %}
+        <header>
+            <div class="alert alert-primary mb-0 text-center" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+        {% endif %}
+        <main class="container-fluid py-5 text-center">
+        {% block main %}{% endblock %}
+        </main>
+        
+        <footer class="container-fluid mt-auto">
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-2 my-2 border-top">
+                <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Jacek Malinowski</p>
+                <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <img src="/static/favicon.ico" width="40" height="40">
+                </a>
+                <p class="col-md-4 mb-0 text-body-secondary text-end">&copy; <a href="https://www.geoportal.gov.pl/">geoportal.gov.pl</a> resources</p>
+            </div>
+
+        </footer>
+
+        <!--Jquery bootstrap dependiences-->   
+        <script src="/static/js/jquery-3.6.0.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+    </body>
+</html>

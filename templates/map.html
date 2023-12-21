@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- CSS -->
+        <link href="/static/css/map.css" rel="stylesheet">
+        <link href="/static/css/leaflet.css" rel="stylesheet"/>
+        <link href="/static/css/Control.Coordinates.css" rel="stylesheet"/>
+        <link href="/static/css/easy-button.css" rel="stylesheet">
+
+        <!--Leaflet dependiences-->
+        <script src="/static/js/jquery-3.6.0.js"></script>
+        <script src="/static/js/leaflet.js"></script>
+        <script src="/static/js/Control.Coordinates.js"></script>
+        <script src="/static/js/ajax.js"></script>
+        <script src="/static/js/easy-button.js"></script>
+
+        <!-- Icons -->
+        <script src="https://kit.fontawesome.com/b37e4ae74e.js" crossorigin="anonymous"></script>
+
+        <title>ParcelSearch: Map</title>
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    </head>
+
+    <body onload="loadMap()">
+
+        <!-- Map: bbox -->
+        <meta id="my-data" data-lat="{{ lat }}" data-lng="{{ lng }}" data-zoom="{{ zoom }}">
+        <div id="map"></div>
+        <script>
+            // Dont worry about errors - jinja syntax
+            const save_url = {{ url_for('saveParcel')|tojson }};
+            const delete_url = {{ url_for('deleteParcel')|tojson }};
+            const parcel_url = {{ url_for('getParcel')|tojson }};
+        </script>
+        <script src="/static/js/mapDownload.js"></script>
+        <script src="/static/js/mapObjects.js"></script>
+        <!-- <script src="/static/js/map.js"></script> -->
+    </body>
+</html>
